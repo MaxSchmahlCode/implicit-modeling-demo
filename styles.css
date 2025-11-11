@@ -35,7 +35,7 @@ overflow: visible; /* overflow: hidden/visible */
 .demo canvas {
 display: block;
 width: 100%;
-aspect-ratio: 1.5 / 1;
+/* aspect-ratio: 1.5 / 1.5; */
 }
 
 .controls {

@@ -5,12 +5,12 @@ async function loadShaderSource(path) {
 }
 
 // Load multiple shader source files
-async function createShaderProgram(gl) {
+async function createShaderProgram(gl, sdfPath = 'shaders/02-sdf.glsl') {
   const [vsSource, mainFrag, utils, sdf, camera, raymarch, lighting] = await Promise.all([
     loadShaderSource('shaders/main.vert'),
     loadShaderSource('shaders/main.frag'),
     loadShaderSource('shaders/01-utils.glsl'),
-    loadShaderSource('shaders/02-sdf.glsl'),
+    loadShaderSource(sdfPath),
     loadShaderSource('shaders/03-camera.glsl'),
     loadShaderSource('shaders/04-raymarch.glsl'),
     loadShaderSource('shaders/05-lighting.glsl'),
@@ -83,7 +83,7 @@ function createQuad(gl) {
 
 // Main initialization and render loop
 // Accept canvas and slider elements from the caller so we don't rely on a hard-coded id
-async function main(canvas, slider) {
+async function main(canvas, slider, sdfPath) {
   if (!canvas) {
     console.error('Canvas not found!');
     return;
@@ -110,7 +110,8 @@ async function main(canvas, slider) {
   gl.viewport(0, 0, canvas.width, canvas.height);
   
   // Create shader program
-  const program = await createShaderProgram(gl);
+  // const sdfPath = 'shaders/02-sdf.glsl'; // Default SDF path
+  const program = await createShaderProgram(gl, sdfPath);
   if (!program) {
     console.error('Failed to create shader program');
     return;
@@ -122,9 +123,10 @@ async function main(canvas, slider) {
   const quadBuffer = createQuad(gl);
   
   // Get attribute and uniform locations
-  const positionLoc = gl.getAttribLocation(program, 'position');
+  const positionLoc = gl.getAttribLocation(program, 'position'); // What is 'position'?
   const timeLoc = gl.getUniformLocation(program, 'iTime');
   const resolutionLoc = gl.getUniformLocation(program, 'iResolution');
+  const sliderLoc = gl.getUniformLocation(program, 'iSlider');
   
   // Setup vertex attribute
   gl.bindBuffer(gl.ARRAY_BUFFER, quadBuffer);
@@ -145,9 +147,15 @@ async function main(canvas, slider) {
     const time = (Date.now() - startTime) / 1000.0;
 
     // Set uniforms
-    if (timeLoc) gl.uniform1f(timeLoc, time);
-    if (resolutionLoc) gl.uniform2f(resolutionLoc, canvas.width, canvas.height);
+    // if (timeLoc) gl.uniform1f(timeLoc, time);
+    // if (resolutionLoc) gl.uniform2f(resolutionLoc, canvas.width, canvas.height);
+    // if (sliderLoc) gl.uniform1f(sliderLoc, parseFloat(slider.value));
+    gl.uniform1f(timeLoc, time);
+    gl.uniform2f(resolutionLoc, canvas.width, canvas.height);
+    gl.uniform1f(sliderLoc, parseFloat(slider.value));
+    
     // Clear and draw
+    
     gl.clearColor(0, 0, 0, 0); // transparent background
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
@@ -161,6 +169,6 @@ async function main(canvas, slider) {
 // Start when page loads
 //window.addEventListener('load', main);
 window.addEventListener('load', () => {
-  main(document.getElementById('canvas1'), document.getElementById('slider1'));
-  main(document.getElementById('canvas2'), document.getElementById('slider2'));
+  main(document.getElementById('canvas1'), document.getElementById('slider1'), 'shaders/02-sdf.glsl');
+  main(document.getElementById('canvas2'), document.getElementById('slider2'), 'shaders/02-sdf_.glsl');
 });

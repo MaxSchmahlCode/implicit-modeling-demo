@@ -2,6 +2,7 @@ precision highp float;
 
 uniform vec2 iResolution;
 uniform float iTime;
+uniform float iSlider;
 
 #include "01-utils.glsl"
 #include "02-sdf.glsl"
@@ -24,8 +25,11 @@ void main() {
 
     vec2 uv = (gl_FragCoord.xy - 0.5 * iResolution.xy) / iResolution.y; // Normalized coordinates
 
-    // vec3 ro = vec3(0.0, 2.0, 5.0); // Camera position
-    // vec3 target = vec3(0.0, 1.0, 0.0); // Look-at target
+    // vec2 uv = (gl_FragCoord.xy / iResolution) * 2.0 - 1.0;
+    // uv.x *= iResolution.x / iResolution.y;
+
+    // vec3 ro = vec3(0.0, 1.0, 5.0); // Camera position
+    // vec3 target = vec3(0.0, 0.0, 0.0); // Look-at target
     // mat3 cam = cameraMatrix(ro, target, 0.0); // Camera matrix
     // vec3 rd = normalize(cam * vec3(uv, -1.5)); // Ray direction
 
