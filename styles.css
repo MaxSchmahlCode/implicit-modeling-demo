@@ -7,37 +7,54 @@
 }
 
 body {
-  background: var(--fifth-color);
-  color: var(--first-color);
-  font-family: system-ui, sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    margin: 40px;
+    color: #111;
+    background: #999;
+}
+
+main {
+  max-width: 600px;
+  width: 90%;
+}
+h2 {
   text-align: center;
-  margin: 0;
-  padding: 2rem;
+  margin-bottom: 32px;
 }
+
 .demo {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1.5 / 1;
-  margin-bottom: 24px;
-  border-radius: 8px;
-  overflow: hidden;
-  background: transparent;
+position: relative;
+width: 100%;
+max-width: 800px;
+margin: 30px auto 10px;
+background: transparent;
+border-radius: 8px;
+overflow: visible; /* overflow: hidden/visible */
 }
-canvas {
-  display: block;
-  margin: 2rem auto;
-  height: 600px;
-  width: auto;
-  /* border: 1px solid #333; */
-  background:transparent;
+
+.demo canvas {
+display: block;
+width: 100%;
+aspect-ratio: 1.5 / 1;
 }
-h1 {
-  font-weight: 600;
-  color: var(--third-color);
+
+.controls {
+max-width: 800px;
+margin: 0px auto 24px;
+padding: 0 10px;
 }
+
+.controls input[type="range"] {
+display: block;
+width: 100%;
+padding: 4px 0;
+margin: 10px 0;
+/* margin-top: -6px; */
+overflow: visible;
+}
+
 p {
-  max-width: 300px;
-  margin: 0 auto;
+  text-align: center;
   line-height: 1.5;
-  color: var(--second-color);
+  margin: 32px 0;
 }

@@ -1,29 +1,32 @@
+// Asynchronously fetch shader sources
 async function loadShaderSource(path) {
   const response = await fetch(path);
   return await response.text();
 }
 
+// Load multiple shader source files
 async function createShaderProgram(gl) {
-  const [vsSource, mainFrag, sdf, raymarch, lighting, camera, utils] = await Promise.all([
+  const [vsSource, mainFrag, utils, sdf, camera, raymarch, lighting] = await Promise.all([
     loadShaderSource('shaders/main.vert'),
     loadShaderSource('shaders/main.frag'),
-    loadShaderSource('shaders/sdf.glsl'),
-    loadShaderSource('shaders/raymarch.glsl'),
-    loadShaderSource('shaders/lighting.glsl'),
-    loadShaderSource('shaders/camera.glsl'),
-    loadShaderSource('shaders/utils.glsl'),
+    loadShaderSource('shaders/01-utils.glsl'),
+    loadShaderSource('shaders/02-sdf.glsl'),
+    loadShaderSource('shaders/03-camera.glsl'),
+    loadShaderSource('shaders/04-raymarch.glsl'),
+    loadShaderSource('shaders/05-lighting.glsl'),
   ]);
 
   // Replace #include "..." manually
   let fragSource = mainFrag
-    .replace('#include "utils.glsl"', utils)
-    .replace('#include "sdf.glsl"', sdf)
-    .replace('#include "camera.glsl"', camera)
-    .replace('#include "raymarch.glsl"', raymarch)
-    .replace('#include "lighting.glsl"', lighting);
+    .replace('#include "01-utils.glsl"', utils)
+    .replace('#include "02-sdf.glsl"', sdf)
+    .replace('#include "03-camera.glsl"', camera)
+    .replace('#include "04-raymarch.glsl"', raymarch)
+    .replace('#include "05-lighting.glsl"', lighting);
 
-  console.log('Original fragment shader:', mainFrag);
-  console.log('After replacements:', fragSource);
+  // Debug: Log the final fragment shader source
+  // console.log('Original fragment shader:', mainFrag);
+  // console.log('After replacements:', fragSource);
 
   // Compile shaders
   const vertShader = compileShader(gl, gl.VERTEX_SHADER, vsSource);
@@ -33,6 +36,7 @@ async function createShaderProgram(gl) {
   return program;
 }
 
+// Setup shader
 function compileShader(gl, type, src) {
   const shader = gl.createShader(type);
   gl.shaderSource(shader, src);
@@ -46,6 +50,7 @@ function compileShader(gl, type, src) {
   return shader;
 }
 
+// Link program
 function linkProgram(gl, vs, fs) {
   const program = gl.createProgram();
   gl.attachShader(program, vs);
@@ -60,7 +65,7 @@ function linkProgram(gl, vs, fs) {
   return program;
 }
 
-// NEW: Create fullscreen quad
+// Create fullscreen quad vertex buffer (geometry on which shaders run)
 function createQuad(gl) {
   const positions = new Float32Array([
     -1, -1,
@@ -76,9 +81,9 @@ function createQuad(gl) {
   return buffer;
 }
 
-// NEW: Main initialization and render loop
-async function main() {
-  const canvas = document.getElementById('glCanvas');
+// Main initialization and render loop
+// Accept canvas and slider elements from the caller so we don't rely on a hard-coded id
+async function main(canvas, slider) {
   if (!canvas) {
     console.error('Canvas not found!');
     return;
@@ -135,26 +140,27 @@ async function main() {
   
   // Render loop
   const startTime = Date.now();
-  
+
   function render() {
     const time = (Date.now() - startTime) / 1000.0;
-    
+
     // Set uniforms
     if (timeLoc) gl.uniform1f(timeLoc, time);
     if (resolutionLoc) gl.uniform2f(resolutionLoc, canvas.width, canvas.height);
-    
     // Clear and draw
-    // gl.clearColor(0, 0, 0, 1);
     gl.clearColor(0, 0, 0, 0); // transparent background
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    
     requestAnimationFrame(render);
   }
-  
+
   console.log('Starting render loop');
   render();
 }
 
 // Start when page loads
-window.addEventListener('load', main);
+//window.addEventListener('load', main);
+window.addEventListener('load', () => {
+  main(document.getElementById('canvas1'), document.getElementById('slider1'));
+  main(document.getElementById('canvas2'), document.getElementById('slider2'));
+});
