@@ -3,11 +3,11 @@ precision highp float;
 uniform vec2 iResolution;
 uniform float iTime;
 
-#include "utils.glsl"
-#include "sdf.glsl"
-#include "camera.glsl"
-#include "raymarch.glsl"
-#include "lighting.glsl"
+#include "01-utils.glsl"
+#include "02-sdf.glsl"
+#include "03-camera.glsl"
+#include "04-raymarch.glsl"
+#include "05-lighting.glsl"
 
 // out vec4 fragColor;
 
