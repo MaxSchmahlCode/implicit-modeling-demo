@@ -170,14 +170,14 @@ async function main(canvas, slider, sdfPath) {
   gl.vertexAttribPointer(positionLoc, 2, gl.FLOAT, false, 0, 0);
   
   // Handle window resize
-  // window.addEventListener('resize', () => {
-  //   canvas.width = window.innerWidth;
-  //   canvas.height = window.innerHeight;
-  //   gl.viewport(0, 0, canvas.width, canvas.height);
-  // });
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    gl.viewport(0, 0, canvas.width, canvas.height);
+  });
   
-  window.addEventListener('resize', () => resizeCanvas(canvas, gl));
-  resizeCanvas(canvas, gl);
+  // window.addEventListener('resize', () => resizeCanvas(canvas, gl));
+  // resizeCanvas(canvas, gl);
 
   // Render loop
   const startTime = Date.now();
@@ -209,4 +209,5 @@ async function main(canvas, slider, sdfPath) {
 window.addEventListener('load', () => {
   main(document.getElementById('canvas1'), document.getElementById('slider1'), 'shaders/02-sdf.glsl');
   main(document.getElementById('canvas2'), document.getElementById('slider2'), 'shaders/02-sdf-pulley.glsl');
+  main(document.getElementById('canvas3'), document.getElementById('slider3'), 'shaders/02-sdf-manifold.glsl');
 });
