@@ -1,3 +1,27 @@
+function resizeCanvas(canvas, gl) {
+  // Get CSS display size
+  const width = canvas.clientWidth;
+  const height = canvas.clientHeight;
+
+  // Calculate aspect ratio you want, e.g., 1:1 for square
+  const aspectRatio = 1;
+
+  let newWidth = width;
+  let newHeight = newWidth / aspectRatio;
+
+  if (newHeight > height) {
+    newHeight = height;
+    newWidth = newHeight * aspectRatio;
+  }
+
+  // Set internal size to avoid stretching
+  if (canvas.width !== newWidth || canvas.height !== newHeight) {
+    canvas.width = newWidth;
+    canvas.height = newHeight;
+    gl.viewport(0, 0, newWidth, newHeight);
+  }
+}
+
 // Asynchronously fetch shader sources
 async function loadShaderSource(path) {
   const response = await fetch(path);
@@ -105,10 +129,22 @@ async function main(canvas, slider, sdfPath) {
   gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA); // Set blending function
 
   // Set canvas size
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  // canvas.width = window.innerWidth;
+  // canvas.height = window.innerHeight;
+  // gl.viewport(0, 0, canvas.width, canvas.height);
+
+  // const canvas = document.getElementById('canvas1');
+  // const gl = canvas.getContext('webgl');
+
+  // Set actual drawing buffer size to match CSS displayed size
+  // const cssWidth = canvas.clientWidth;
+  // const cssHeight = canvas.clientHeight;
+  // canvas.width = cssWidth;
+  // canvas.height = cssHeight;
+
+  // Update WebGL viewport to match canvas size
   gl.viewport(0, 0, canvas.width, canvas.height);
-  
+
   // Create shader program
   // const sdfPath = 'shaders/02-sdf.glsl'; // Default SDF path
   const program = await createShaderProgram(gl, sdfPath);
@@ -134,12 +170,15 @@ async function main(canvas, slider, sdfPath) {
   gl.vertexAttribPointer(positionLoc, 2, gl.FLOAT, false, 0, 0);
   
   // Handle window resize
-  window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    gl.viewport(0, 0, canvas.width, canvas.height);
-  });
+  // window.addEventListener('resize', () => {
+  //   canvas.width = window.innerWidth;
+  //   canvas.height = window.innerHeight;
+  //   gl.viewport(0, 0, canvas.width, canvas.height);
+  // });
   
+  window.addEventListener('resize', () => resizeCanvas(canvas, gl));
+  resizeCanvas(canvas, gl);
+
   // Render loop
   const startTime = Date.now();
 
@@ -153,9 +192,8 @@ async function main(canvas, slider, sdfPath) {
     gl.uniform1f(timeLoc, time);
     gl.uniform2f(resolutionLoc, canvas.width, canvas.height);
     gl.uniform1f(sliderLoc, parseFloat(slider.value));
-    
+
     // Clear and draw
-    
     gl.clearColor(0, 0, 0, 0); // transparent background
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);

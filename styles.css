@@ -35,19 +35,20 @@ p {
   margin: 32px 0;
 }
 
-.demo {
-/* width: 100vw; */
+.demo canvas{
+/* width: 400px; */
+/* height: 400px; */
 /* margin: 30px auto 10px; */
 /* background: transparent; */
-border-radius: 8px;
+/* border-radius: 8px; */
 /* overflow: visible; */
 }
 
-.demo canvas {
-/* display: block; */
-width: 800px;
-height: 800px;
-object-fit: contain;
+canvas {
+display: block;
+width: 500px;
+height: auto;
+/* object-fit: contain; */
 /* aspect-ratio: 1.0 / 1.0; */
 }
 
