@@ -25,7 +25,7 @@ h2 {
 .demo {
 position: relative;
 width: 100%;
-max-width: 800px;
+max-width: 1000px;
 margin: 30px auto 10px;
 background: transparent;
 border-radius: 8px;
@@ -39,7 +39,7 @@ width: 100%;
 }
 
 .controls {
-max-width: 800px;
+max-width: 500px;
 margin: 0px auto 24px;
 padding: 0 10px;
 }
@@ -54,7 +54,7 @@ overflow: visible;
 }
 
 p {
-  text-align: center;
+  text-align: left;
   line-height: 1.5;
   margin: 32px 0;
 }
