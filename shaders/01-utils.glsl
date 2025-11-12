@@ -18,6 +18,10 @@ float boxSDF(vec3 p, vec3 b) {
     vec3 q = abs(p) - b;
     return length(max(q, 0.0)) + min(max(q.x,max(q.y,q.z)), 0.0);
 }
+float sdCylinder(vec3 p, float h, float r) {
+    vec2 d = abs(vec2(length(p.xz), p.y)) - vec2(r, h);
+    return min(max(d.x,d.y), 0.0) + length(max(d,0.0));
+}
 float sdCylinder(vec3 p, float r, float halfh, int axis) {
     vec2 d;
     if (axis == 0)      d = vec2(length(p.yz) - r, abs(p.x) - halfh); // X axis
@@ -25,4 +29,9 @@ float sdCylinder(vec3 p, float r, float halfh, int axis) {
     else                d = vec2(length(p.xy) - r, abs(p.z) - halfh); // Z axis
 
     return min(max(d.x, d.y), 0.0) + length(max(d, 0.0));
+}
+
+float sdCylinderY(vec3 p, float r, float halfh){
+    vec2 d = vec2(length(vec2(p.x,p.z)) - r, abs(p.y) - halfh);
+    return min(max(d.x,d.y), 0.0) + length(max(d,0.0));
 }
