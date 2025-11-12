@@ -123,7 +123,7 @@ async function main(canvas, slider, sdfPath) {
   const quadBuffer = createQuad(gl);
   
   // Get attribute and uniform locations
-  const positionLoc = gl.getAttribLocation(program, 'position'); // What is 'position'?
+  const positionLoc = gl.getAttribLocation(program, 'position'); // What is 'position' for?
   const timeLoc = gl.getUniformLocation(program, 'iTime');
   const resolutionLoc = gl.getUniformLocation(program, 'iResolution');
   const sliderLoc = gl.getUniformLocation(program, 'iSlider');
