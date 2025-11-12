@@ -33,7 +33,7 @@ void main() {
     // mat3 cam = cameraMatrix(ro, target, 0.0); // Camera matrix
     // vec3 rd = normalize(cam * vec3(uv, -1.5)); // Ray direction
 
-    vec3 ro = vec3(0.0, 1.0, 5.0);  // Move back more
+    vec3 ro = vec3(0.0, 0.0, 4.0);  // Move back more
     vec3 rd = normalize(vec3(uv, -1.0)); // Simple perspective
 
     vec3 hitPos; // To store hit position
