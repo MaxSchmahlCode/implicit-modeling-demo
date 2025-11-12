@@ -208,5 +208,5 @@ async function main(canvas, slider, sdfPath) {
 //window.addEventListener('load', main);
 window.addEventListener('load', () => {
   main(document.getElementById('canvas1'), document.getElementById('slider1'), 'shaders/02-sdf.glsl');
-  main(document.getElementById('canvas2'), document.getElementById('slider2'), 'shaders/02-sdf_.glsl');
+  main(document.getElementById('canvas2'), document.getElementById('slider2'), 'shaders/02-sdf-pulley.glsl');
 });
