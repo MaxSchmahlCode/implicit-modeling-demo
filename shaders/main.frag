@@ -17,7 +17,7 @@ void main() {
     // vec2 uv = (gl_FragCoord.xy / iResolution) * 2.0 - 1.0;
     // uv.x *= iResolution.x / iResolution.y;
 
-    vec3 camPos = vec3(0.0, 0.4, 4.2); // Camera position (ro)
+    vec3 camPos = vec3(0.4, 0.4, 4.2); // Camera position (ro)
     vec3 target = vec3(0.0, 0.0, 0.0); // Look-at target
     mat3 cam = cameraMatrix(camPos, target, 0.0); // Camera matrix
     // vec3 rd = normalize(cam * vec3(uv, 1.0)); // Ray direction

@@ -92,14 +92,20 @@ float sdTubeBezier(vec3 p, vec3 p0, vec3 p1, vec3 p2, vec3 p3, float rInner, flo
 
 float map(vec3 p){
 
-    float l1 = 0.3;
-    float l2 = 0.3;
-    float l3 = 0.3;
+    float l1 = 1.8;
+    float l2 = 1.8;
+    float l3 = 1.8;
 
     float rInner = 0.0;
-    float rOuter = 0.02;
-    float shellThickness = 0.02;
+    float rOuter = 0.15;
+    float shellThickness = 0.1;
     const int nCurves = 9;
+
+    float rCyl = rOuter + shellThickness + 0.05;
+    float hCyl = 0.4;
+
+    float k = 0.7 * iSlider;
+
     vec3 listA[nCurves];
     vec3 listB[nCurves];
     // L1
@@ -160,8 +166,7 @@ float map(vec3 p){
             cylinderOrientation = 2;
         }
         vec3 pCylinder = listA[i];
-        float rCyl = 0.05;
-        float hCyl = 0.02;
+
         float firstCylinder = sdCylinder(p - p0, rCyl, hCyl, cylinderOrientation); //cylinderOrientation);
         unifiedCylinders = opUnion(unifiedCylinders, firstCylinder);
 
@@ -188,7 +193,7 @@ float map(vec3 p){
         unifiedCurves = opUnion(unifiedCurves, bezier2);
 
         float shelledBezier = sdShell(bezier2, shellThickness);
-        unifiedShells = opSmoothUnion(unifiedShells, shelledBezier, 0.08);
+        unifiedShells = opSmoothUnion(unifiedShells, shelledBezier, k);
     };
 
     // Add shell

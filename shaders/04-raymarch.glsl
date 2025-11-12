@@ -1,7 +1,7 @@
 // raymarch.glsl
 float raymarch(vec3 ro, vec3 rd, out vec3 hitPos) {
     float t = 0.0; // distance along ray
-    for(int i = 0; i < 128; i++) {
+    for(int i = 0; i < 200; i++) {
         vec3 p = ro + rd * t; // current sample position in world space
         float d = map(p); // signed distance from p to nearest surface
         if (d < 0.001) {
