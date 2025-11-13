@@ -79,6 +79,19 @@ border-radius: 3px;
 touch-action: none; /* helps on touch devices */
 }
 
+/* Thumb (the knob) */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 32px;     /* larger knob */
+  height: 32px;
+  background: #007aff;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-top: -8px; /* center thumb on track */
+  cursor: pointer;
+}
+
 input[type=range]::-webkit-slider-runnable-track {
   height: 16px;
   background: #ddd;
