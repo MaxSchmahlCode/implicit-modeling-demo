@@ -90,7 +90,7 @@ async function main(canvas, slider, sdfPath, rayFactor) {
   }
   
   const gl =
-    canvas.getContext('webgl', { alpha: true}); // ||
+    canvas.getContext('webgl2', { alpha: true}); // ||
     //canvas.getContext('experimental-webgl', { alpha: true});
 
   if (!gl) {
