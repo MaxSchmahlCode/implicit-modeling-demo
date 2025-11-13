@@ -3,6 +3,7 @@ precision highp float;
 uniform vec2 iResolution;
 uniform float iTime;
 uniform float iSlider;
+uniform float iRayFactor;
 
 #include "01-utils.glsl"
 #include "02-sdf.glsl"
@@ -17,7 +18,7 @@ void main() {
     // vec2 uv = (gl_FragCoord.xy / iResolution) * 2.0 - 1.0;
     // uv.x *= iResolution.x / iResolution.y;
 
-    vec3 camPos = 2.0*vec3(0.4, 0.4, 4.2); // Camera position (ro)
+    vec3 camPos = 2.0*vec3(0.8, 0.8, 4.2); // Camera position (ro)
     vec3 target = vec3(0.0, 0.0, 0.0); // Look-at target
     mat3 cam = cameraMatrix(camPos, target, 0.0); // Camera matrix
     // vec3 rd = normalize(cam * vec3(uv, 1.0)); // Ray direction
@@ -50,6 +51,28 @@ void main() {
         //vec3 color = phong(hitPos, n, ro, vec3(2.0, 4.0, 1.0)); // Apply Phong lighting
         vec3 color = mattediffuse(hitPos, n, vec3(2.0, 4.0, 10.0)); // Apply matte diffuse lighting
         gl_FragColor = vec4(pow(color, vec3(0.4545)), 1.0); // Gamma correction
+
+        /* // 1. Compute surface normal
+        vec3 n = calcNormal(hitPos);
+
+        // 2. Compute base shaded color
+        vec3 color = mattediffuse(hitPos, n, vec3(2.0, 4.0, 10.0));
+
+        // 3. Compute final SDF distance at the hit point
+        //    This MUST match the main SDF used in raymarching
+        float d = map(hitPos);   // <--- IMPORTANT
+
+        // 4. Antialiasing width based on pixel derivatives
+        float aa = fwidth(d);
+
+        // 5. Smooth edge alpha: 0 at surface, fade across aa
+        float edge = smoothstep(0.0, aa, d);
+
+        float alpha = 1.0 - edge;  // opaque at surface, fade away
+
+        // 6. Gamma-correct + proper alpha
+        gl_FragColor = vec4(pow(color, vec3(0.4545)), alpha); */
+
     } else {
         // gl_FragColor = vec4(getDirectionalColor(rd), 1.0);
         gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0); // Set transparent background
