@@ -143,7 +143,7 @@ async function main(canvas, slider, sdfPath) {
   // canvas.height = cssHeight;
 
   // Update WebGL viewport to match canvas size
-  gl.viewport(0, 0, canvas.width, canvas.height);
+  // gl.viewport(0, 0, canvas.width, canvas.height);
 
   // Create shader program
   // const sdfPath = 'shaders/02-sdf.glsl'; // Default SDF path
@@ -170,13 +170,15 @@ async function main(canvas, slider, sdfPath) {
   gl.vertexAttribPointer(positionLoc, 2, gl.FLOAT, false, 0, 0);
   
   // Handle window resize
-  window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    gl.viewport(0, 0, canvas.width, canvas.height);
-  });
+  // window.addEventListener('resize', () => {
+  //   canvas.width = window.innerWidth;
+  //   canvas.height = window.innerHeight;
+  //   gl.viewport(0, 0, canvas.width, canvas.height);
+  // });
+
+  // gl.viewport(0, 0, 300, 300);
   
-  // window.addEventListener('resize', () => resizeCanvas(canvas, gl));
+  window.addEventListener('resize', () => resizeCanvas(canvas, gl));
   // resizeCanvas(canvas, gl);
 
   // Render loop
