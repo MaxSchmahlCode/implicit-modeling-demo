@@ -1,3 +1,4 @@
+// Resize Canvas when changed (not in use atm)
 function resizeCanvas(canvas, gl) {
   // Get CSS display size
   const width = canvas.clientWidth;
@@ -136,14 +137,14 @@ async function main(canvas, slider, sdfPath) {
   // const canvas = document.getElementById('canvas1');
   // const gl = canvas.getContext('webgl');
 
+  // Works great too!
   // Set actual drawing buffer size to match CSS displayed size
-  // const cssWidth = canvas.clientWidth;
-  // const cssHeight = canvas.clientHeight;
-  // canvas.width = cssWidth;
-  // canvas.height = cssHeight;
-
+  const cssWidth = canvas.clientWidth;
+  const cssHeight = canvas.clientHeight;
+  canvas.width = cssWidth;
+  canvas.height = cssHeight;
   // Update WebGL viewport to match canvas size
-  // gl.viewport(0, 0, canvas.width, canvas.height);
+  gl.viewport(0, 0, canvas.width, canvas.height);
 
   // Create shader program
   // const sdfPath = 'shaders/02-sdf.glsl'; // Default SDF path
@@ -169,17 +170,9 @@ async function main(canvas, slider, sdfPath) {
   gl.enableVertexAttribArray(positionLoc);
   gl.vertexAttribPointer(positionLoc, 2, gl.FLOAT, false, 0, 0);
   
-  // Handle window resize
-  // window.addEventListener('resize', () => {
-  //   canvas.width = window.innerWidth;
-  //   canvas.height = window.innerHeight;
-  //   gl.viewport(0, 0, canvas.width, canvas.height);
-  // });
-
-  // gl.viewport(0, 0, 300, 300);
-  
-  window.addEventListener('resize', () => resizeCanvas(canvas, gl));
-  // resizeCanvas(canvas, gl);
+  // Works great
+  // window.addEventListener('resize', () => resizeCanvas(canvas, gl)); // resize when window changes
+  // resizeCanvas(canvas, gl); // resize when loaded
 
   // Render loop
   const startTime = Date.now();
@@ -211,5 +204,5 @@ async function main(canvas, slider, sdfPath) {
 window.addEventListener('load', () => {
   main(document.getElementById('canvas1'), document.getElementById('slider1'), 'shaders/02-sdf.glsl');
   main(document.getElementById('canvas2'), document.getElementById('slider2'), 'shaders/02-sdf-pulley.glsl');
-  main(document.getElementById('canvas3'), document.getElementById('slider3'), 'shaders/02-sdf-manifold.glsl');
+  main(document.getElementById('canvas3'), document.getElementById('slider3'), 'shaders/02-sdf-gyroid.glsl');
 });

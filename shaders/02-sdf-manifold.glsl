@@ -104,7 +104,7 @@ float map(vec3 p){
     float rCyl = rOuter + shellThickness + 0.05;
     float hCyl = 0.4;
 
-    float k = 0.7 * iSlider;
+    float k = 0.2 * iSlider;
 
     vec3 listA[nCurves];
     vec3 listB[nCurves];

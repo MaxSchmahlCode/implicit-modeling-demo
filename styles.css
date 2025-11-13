@@ -46,16 +46,16 @@ p {
 
 canvas {
 display: block;
-width: 500px;
+width: 600px;
 /* height: 500px; */
 /* object-fit: contain; */
 aspect-ratio: 1.0 / 1.0;
 }
 
-/* #canvas2 {
+#canvas2 {
   width: 500px;
-  height: 500px;
-} */
+  height: 150px;
+}
 
 
 /* .controls {
