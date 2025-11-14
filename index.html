@@ -8,10 +8,10 @@
 </head>
 <body>
   <main class="container">
-  <article>
+  <!-- <article>
     <h2>This is me</h2>
     <a href="assets/Lebenslauf.pdf" target="_blank">Résumé</a>
-  </article>
+  </article> -->
 
   <article>
     
@@ -56,86 +56,6 @@ float opIntersection(float a, float b) {
         &lt;&lt; Move intersecting Sphere &gt;&gt;
         <input id="slider0" type="range" min="0" max="1" step="0.01" value="0.5">
       </label>
-
- <h2>3. Blending Objects (Smooth Union)</h2>
-    <p>
-        Smooth union operations create organic, tangent-continuous blends between shapes by interpolating distance fields over a controllable blend radius 'k', eliminating stress concentrations and producing aesthetically pleasing forms. Unlike traditional CAD fillets that often fail on complex intersections, smooth unions always generate valid, printable geometry ideal for biomimetic structures and mechanical parts requiring optimized material distribution. The blend parameter controls the transition width, with larger values producing more gradual transitions that flow naturally between features. The interactive animation demonstrates how adjusting the blend parameter dynamically reshapes transitions between primitives.
-    </p>
-
-    <div class="code-display">
-        <pre><code>float opSmoothUnion(float d1, float d2, float k) {
-    k += 0.001;
-    k *= 4.0;
-    float h = max(k - abs(d1 - d2), 0.0);
-    return min(d1, d2) - h * h * 0.25 / k;
-}</code></pre>
-    </div>
-
-  <div class="demo">
-    <canvas id="canvas1"></canvas>
-  </div>
-  <div class="controls">
-      <label>
-          &lt;&lt; Change Blending Factor &gt;&gt;
-          <input id="slider1" type="range" min="0" max="1" step="0.01" value="0.0">
-      </label>
-  </div>
-
-
-  <h2>4. Robustness of Constructive Solid Geometry</h2>
-  <p>
-      Implicit modeling's CSG operations are mathematically guaranteed to produce valid results through simple arithmetic on distance values, eliminating the mesh intersection failures that plague traditional CAD systems. This reliability is crucial for additive manufacturing where complex assemblies with hundreds of boolean operations can be computed instantly without the numerical precision issues, degenerate triangles, or topological inconsistencies common in boundary representations. Even extreme cases like grazing-angle intersections or self-intersecting arrangements produce predictable, watertight geometry suitable for slicing and printing. The interactive animation illustrates how complex boolean combinations remain stable and artifact-free even with intricate intersections.
-  </p>
-
-  <canvas id="canvas2"></canvas>
-  
-  <div class="controls">
-      <label>
-          &lt;&lt; Change Model Variation &gt;&gt;
-          <input id="slider2" type="range" min="0" max="1" step="0.1" value="0.0">
-      </label>
-  </div>
-
-  
-  <h2>5. Lattice Structures (Gyroid)</h2>
-  <p>
-      The gyroid, a triply periodic minimal surface defined by coupled sine-cosine functions, creates infinitely repeating structures with exceptional strength-to-weight ratios and uniform curvature that eliminates stress concentrations. The frequency parameter controls cell size while thickness determines wall width, allowing designers to analytically generate lightweight structures at any resolution with real-time parameter adjustments impossible in traditional CAD. For additive manufacturing, gyroids offer superior energy absorption, excellent heat transfer properties, and natural porosity ideal for aerospace brackets, impact protection, and biomedical implants. The interactive animation demonstrates how frequency and thickness parameters dynamically modify the lattice structure.
-  </p>
-
-  <canvas id="canvas3"></canvas>
-
-  <div class="controls">
-      <label>
-        &lt;&lt; Change Gyroid Density &gt;&gt;
-        <input id="slider3" type="range" min="0" max="1" step="0.01" value="0.5">
-      </label>
-  </div>
-
-  <h2>6. Hydraulic Manifold</h2>
-  <p>
-      Implicit modeling enables hydraulic manifolds with smooth, curved flow paths that minimize turbulence and pressure losses while consolidating multiple components into a single printable part, overcoming the limitations of drilled intersecting channels. Smooth union operations create gradual transitions at channel intersections that reduce flow separation, while the ability to optimize channel geometries without machining constraints improves hydraulic efficiency and system reliability. The parametric nature allows rapid design iteration and performance optimization, fully exploiting AM's geometric freedom to achieve integration levels unattainable with traditional manufacturing. The interactive animation demonstrates how implicit functions create smooth, optimized internal channels for hydraulic applications.
-  </p>
-
-  <!-- <canvas id="canvas4"></canvas> -->
-
-  <div class="controls">
-      <label>
-        &lt;&lt; Change Smooth Union &gt;&gt;
-        <input id="slider4" type="range" min="0" max="1" step="0.01" value="0.0">
-      </label>
-  </div>
-  
-  
-  <h2>7. Heat Exchanger</h2>
-  <p>
-      Advanced heat exchanger designs leverage implicit modeling to create topology-optimized flow paths with TPMS-based surfaces that maximize heat transfer area while maintaining low pressure drop, far exceeding conventional fin-and-tube geometries. The shell operation offsets distance fields to produce uniform wall thickness crucial for thermal efficiency, allowing precise control throughout complex geometries while integrating headers and mounting features into a single leak-free component. Gyroid structures within exchangers provide exceptional surface area density and promote turbulent mixing that enhances heat transfer coefficients beyond traditional designs. The interactive animation illustrates how the shell function creates uniform-thickness surfaces around complex internal structures for next-generation AM heat exchangers.
-  </p>
-
-  <div class="code-display">
-      <pre><code>float sdShell(float f, float thickness) {
-    return abs(f) - thickness;
-}</code></pre>
-  </div>
 
   </article>
   </main>
