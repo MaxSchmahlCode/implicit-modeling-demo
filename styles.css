@@ -78,18 +78,30 @@ overflow: visible;
 -webkit-appearance: none;
 background: var(--article-background-color);
 border-radius: 3px;
-touch-action: none; /* helps on touch devices */
+touch-action: pan-y; /* helps on touch devices */
 }
 
 
-input[type=range]::-webkit-slider-thumb {
+/* input[type=range]::-webkit-slider-thumb {
   width: 36px;
   height: 26px;
   background-color: #007aff;
   border-radius: 50%;
   border: 12px solid white;
   cursor: pointer;
-  box-shadow: 0 0 0 20px rgba(0,0,0,0); /* invisible padding area */
+  box-shadow: 0 0 0 20px rgba(0,0,0,0);
+} */
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 44px;  /* Larger for easier touch - Apple recommends min 44x44px */
+    height: 44px;
+    background-color: #ff6b6b; /* Change this to your desired knob color */
+    border-radius: 50%;
+    border: 3px solid white;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2); /* visible shadow for depth */
+    position: relative;
+    margin-top: -9px; /* Center the thumb on the track */
 }
 
 input[type=range]::-webkit-slider-runnable-track {
