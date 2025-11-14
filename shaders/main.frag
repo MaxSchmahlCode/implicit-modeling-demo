@@ -49,11 +49,6 @@ void main() {
     vec3 hitPos; // To store hit position
     float minDist; // To store minimum distance to surface
     float t = raymarch( ro, rd, hitPos, minDist); // Perform raymarching
-    // float k = 2.50;
-    // float aa = fwidth(minDist) * k;
-    // float aa = max(0.0, min(1.0, fwidth(d) * 0.75)); // tune 0.75 as needed
-    // float alpha = 1.0 - smoothstep(0.0, aa, minDist);
-    // float alpha = 1.0 - smoothstep(-aa, aa, minDist);
 
     if (t > 0.0) {
         vec3 n = calcNormal(hitPos); // Calculate normal at hit position
@@ -61,16 +56,8 @@ void main() {
         vec3 color = mattediffuse(hitPos, n, vec3(2.0, 4.0, 10.0)); // Apply matte diffuse lighting
         fragColor = vec4(pow(color, vec3(0.4545)), 1.0); // Gamma correction
 
-        // edge = smoothstep(th1, th2, minDist - dNear)
-        // fragColor = mix(colorNear, colorFar, edge)
-
     } else {
-        // vec3 n = calcNormal(hitPos);
-        // vec3 color = mattediffuse(hitPos, n, vec3(2.0, 4.0, 10.0));
-        // vec3 black = vec3(0.0);
-        // fragColor = vec4(pow(black, vec3(0.4545)), alpha);
-
-        // fragColor = vec4(getDirectionalColor(rd), 1.0);
+        // fragColor = vec4(getDirectionalColor(rd), 1.0); // for debugging
         fragColor = vec4(0.0, 0.0, 0.0, 0.0); // Set transparent background
         // fragColor = vec4(minDist * 10.0);
     }

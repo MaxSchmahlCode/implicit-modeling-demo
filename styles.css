@@ -1,11 +1,13 @@
 :root {
-  --first-color:  #233142;
-  --second-color: #455d7a;
-  --third-color:  #f95959;
-  --slider-track-color: #ddd;
-  --article-background-color: #F5F5F5;
+  --article-background-color: #e0e0e0; /*#F5F5F5;*/
   --background-color: #f9f9f9;
+  --slider-track-color: #f9f9f9;
 }
+/*
+  grey tones dark to light:
+  #adadad #bababa #c6c6c6 #d3d3d3 #e0e0e0 #ededed #f9f9f9
+  white: 
+*/
 
 body {
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -62,9 +64,9 @@ width: 100%;
 aspect-ratio: 1.0 / 1.0;
 }
 
-#canvas2 {
-  aspect-ratio: 8.0 / 2.50;
-}
+#canvas0 {aspect-ratio: 8.0 / 2.50;}
+
+#canvas2 {aspect-ratio: 8.0 / 2.50;}
 
 .controls input[type="range"] {
 display: block;
@@ -83,7 +85,7 @@ touch-action: none; /* helps on touch devices */
 input[type=range]::-webkit-slider-thumb {
   width: 16px;
   height: 26px;
-  background: #007aff;
+  background-color: #007aff;
   border-radius: 50%;
   border: 12px solid white;
   cursor: pointer;
@@ -94,4 +96,24 @@ input[type=range]::-webkit-slider-runnable-track {
   height: 26px;
   background: var(--slider-track-color);
   border-radius: 20px;
+}
+
+.code-display {
+  text-align: center;
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+pre {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1rem;
+  text-align: left;
+  overflow-x: auto;
+}
+
+code {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
 }

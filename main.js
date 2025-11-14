@@ -165,7 +165,9 @@ async function main(canvas, slider, sdfPath, rayFactor) {
 // Start when page loads
 //window.addEventListener('load', main);
 window.addEventListener('load', () => {
+  main(document.getElementById('canvas0'), document.getElementById('slider0'), 'shaders/02-sdf-primitives.glsl', 1.0);
   main(document.getElementById('canvas1'), document.getElementById('slider1'), 'shaders/02-sdf.glsl', 1.0);
   main(document.getElementById('canvas2'), document.getElementById('slider2'), 'shaders/02-sdf-pulley.glsl', 1.0);
   main(document.getElementById('canvas3'), document.getElementById('slider3'), 'shaders/02-sdf-gyroid.glsl', 0.1);
+  main(document.getElementById('canvas4'), document.getElementById('slider4'), 'shaders/02-sdf-manifold.glsl', 1.0);
 });

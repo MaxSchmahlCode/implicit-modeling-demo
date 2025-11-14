@@ -46,7 +46,7 @@ float map(vec3 p_){
     float outerCyl = sdCylinderY(p, bodyRadius + 0.01, teethHalfheight);
     float innerCyl = sdCylinderY(p, bodyRadius - 0.02, teethHalfheight);
     float torusLike = opSub(outerCyl, innerCyl);
-    float withRims = opSub(withTeeth, torusLike);
+    float withRims = opSmoothSubtraction(torusLike, withTeeth, 0.001);
 
     // Subtract central bore (axial hole)
     float cylHeight = hubHalfHeight + heightDifference + 0.02;
