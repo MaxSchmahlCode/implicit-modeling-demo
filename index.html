@@ -12,16 +12,12 @@
     <h2>This is me</h2>
     <a href="assets/Lebenslauf.pdf" target="_blank">Résumé</a>
   </article> -->
-
+<!-- 
   <article>
     
   <h1>My Raymarching Demo</h1>
-  <h2>1. Why Implicit Modeling?</h2>
-    <p>
-        Implicit modeling represents geometry through mathematical functions that define signed distance fields, eliminating topology constraints that plague traditional CAD systems. This functional approach enables real-time modifications, guarantees watertight geometry, and naturally supports complex AM features like conformal lattices and topology-optimized structures. Unlike boundary representations that store surfaces as meshes prone to errors, implicit functions allow designers to freely combine and modify geometries without mesh repair or boolean failures. The interactive animation demonstrates how implicit functions dynamically modify geometry in ways traditional modeling cannot achieve.
-    </p>
 
-    <h2>2. Primitives and Boolean Operations</h2>
+    <h2>Primitives and Boolean Operations</h2>
     <p>
         Geometric primitives like spheres and boxes form the foundation of implicit modeling, defined by distance functions that calculate each point's distance from the surface. The sphere uses a simple radius subtraction from the center distance, while the box employs a more sophisticated function to create sharp edges and flat faces. Boolean operations are elegantly simple—union takes the minimum distance, subtraction uses maximum with negation, and intersection takes the maximum—guaranteeing robust, watertight results that never fail regardless of geometric complexity. The interactive animation showcases how these operations combine primitives to create complex geometries suitable for AM applications.
     </p>
@@ -47,7 +43,7 @@ float opSub(float a, float b) {
 float opIntersection(float a, float b) { 
     return max(a, b); 
 }</code></pre>
-  </div>
+  </div> -->
 
   <canvas id="canvas0"></canvas>
 
