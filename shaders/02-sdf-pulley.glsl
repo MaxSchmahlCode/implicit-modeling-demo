@@ -1,11 +1,9 @@
-float map(vec3 p_){
-    // p_.xy = rot2(0.05*sin(iTime)) * p_.xy;
-    // p_.yz = rot2(0.05*cos(iTime)) * p_.yz;
-    p_.xz = rot2(-iTime/10.0) * p_.xz;
+float map(vec3 p){
+    p.xz = rot2(-iTime/10.0) * p.xz;
 
     // Scale geometry
     float scalingFactor = 3.5;
-    vec3 p = p_ / scalingFactor;
+    p = p / scalingFactor;
 
     // Geometric Parameters
     float dt = 0.1;
@@ -16,14 +14,14 @@ float map(vec3 p_){
     // Geometric Parameters
     float beltWidth = 0.5;
 
-    float bodyRadius = 0.5 + stepper; //1.5; // outside radius
+    float bodyRadius = 0.5 + stepper; // outside radius
     float bodyHalfHeight = beltWidth / 2.0 + 0.02; // without hub
 
     float hubRadius = 0.3 + 0.1 * stepper;
     float hubHalfHeight = bodyHalfHeight + 0.1;
     float heightDifference = hubHalfHeight - bodyHalfHeight;
 
-    float teethCount = 20. + 40. * stepper; // 64.;
+    float teethCount = 20. + 40. * stepper;
     float teethRadius = 0.05;
     float teethHalfheight = beltWidth / 2.0;
     float rimThickness = 0.01;
