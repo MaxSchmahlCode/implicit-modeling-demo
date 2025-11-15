@@ -6,8 +6,8 @@ float map(vec3 p_){
     // Geometric Parameters
     float dt = 0.1;
     float bucket = floor(iSlider / dt);
-    float stepSize = 0.1;
-    float stepper = stepSize * bucket;
+    float stepsize = 0.1;
+    float stepper = stepsize * bucket;
 
     // Geometric Parameters
     float beltWidth = 0.5;

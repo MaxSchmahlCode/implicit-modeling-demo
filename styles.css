@@ -54,6 +54,11 @@ p {
   margin: 32px 0;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+}
+
 label {
   text-align: center;
 }
@@ -67,6 +72,11 @@ aspect-ratio: 1.0 / 1.0;
 #canvas0 {aspect-ratio: 8.0 / 2.50;}
 
 #canvas2 {aspect-ratio: 8.0 / 2.50;}
+
+/* .controls {
+  display: flex;
+  justify-content: center;
+} */
 
 .controls input[type="range"] {
 display: block;
