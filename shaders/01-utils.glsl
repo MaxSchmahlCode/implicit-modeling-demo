@@ -27,6 +27,13 @@ float sdShell(float f, float thickness) {
     return abs(f) - thickness;
 }
 
+
+mat2 rot2(float a) {
+    float s = sin(a), c = cos(a);
+    return mat2(c, -s,
+                s,  c);
+}
+
 // ---------- SDF Primitives ----------
 float sdSphere(vec3 p, float r) { return length(p) - r; } // sphereSDF -> sdSphere
 float sdBox(vec3 p, vec3 b) {

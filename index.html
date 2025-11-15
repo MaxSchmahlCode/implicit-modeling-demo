@@ -31,10 +31,11 @@
     }
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
-
+  <link rel="stylesheet" href="styles.css">
   <style>
     body { font-family: "Manrope", sans-serif; }
   </style>
+  <script type="module" src="./main.js" defer></script>
 </head>
 
 <body class="bg-[#f4f4f4] text-black antialiased">
@@ -102,27 +103,49 @@
       <!-- Repeat for all project cards -->
 
       <article class="bg-white border border-gray-300 rounded-lg p-4 shadow-sm">
-        <img src="assets/me.jpg" class="w-full h-44 object-cover rounded-md mb-3">
-        <div class="text-xs text-gray-500">Booking Corp.</div>
-        <div class="font-semibold mt-1 text-lg">Fintech Delio Banking App</div>
-      </article>
+        <div class="font-semibold mt-1 text-lg"></div>
+          <canvas id="canvas0"></canvas>
 
-      <article class="bg-white border border-gray-300 rounded-lg p-4 shadow-sm">
-        <img src="assets/me.jpg" class="w-full h-44 object-cover rounded-md mb-3">
-        <div class="text-xs text-gray-500">Dazzle Inc</div>
-        <div class="font-semibold mt-1 text-lg">Dazzle @ Branding</div>
-      </article>
+          <div class="controls">
+            <label>
+              &lt;&lt; Move intersecting Sphere &gt;&gt;
+              <input id="slider0" type="range" min="0" max="1" step="0.01" value="0.5">
+            </label>
+          </div>
+        <div class="font-semibold mt-1 text-lg">Tangent-continuous blends between shapes by interpolating distance fields</div>
+          <div class="demo">
+            <canvas id="canvas1"></canvas>
+          </div>
+          <div class="controls">
+              <label>
+                  &lt;&lt; Change Blending Factor &gt;&gt;
+                  <input id="slider1" type="range" min="0" max="1" step="0.01" value="0.5">
+              </label>
+          </div>
+        <!-- <img src="assets/me.jpg" class="w-full h-44 object-cover rounded-md mb-3">
+        <div class="text-xs text-gray-500">Dazzle Inc</div> -->
+        <div class="font-semibold mt-1 text-lg">Robust Parametric Design</div>
+          <canvas id="canvas2"></canvas>
+          <div class="controls">
+              <label>
+                  &lt;&lt; Change Pulley Diameter &gt;&gt;
+                  <input id="slider2" type="range" min="0" max="1" step="0.1" value="0.5">
+              </label>
+          </div>
+        <!-- <img src="assets/me.jpg" class="w-full h-44 object-cover rounded-md mb-3">
+        <div class="text-xs text-gray-500">CareSunset</div> -->
+        <div class="font-semibold mt-1 text-lg">Complex Gradient Lattice Structures</div>
+          <canvas id="canvas3"></canvas>
 
-      <article class="bg-white border border-gray-300 rounded-lg p-4 shadow-sm">
-        <img src="assets/me.jpg" class="w-full h-44 object-cover rounded-md mb-3">
-        <div class="text-xs text-gray-500">CareSunset</div>
-        <div class="font-semibold mt-1 text-lg">Healthcare Mobile App</div>
-      </article>
-
-      <article class="bg-white border border-gray-300 rounded-lg p-4 shadow-sm">
-        <img src="assets/me.jpg" class="w-full h-44 object-cover rounded-md mb-3">
+          <div class="controls">
+              <label>
+                &lt;&lt; Move Intersecting Gyroid &gt;&gt;
+                <input id="slider3" type="range" min="0" max="1" step="0.01" value="0.5">
+              </label>
+          </div>
+        <!-- <img src="assets/me.jpg" class="w-full h-44 object-cover rounded-md mb-3">
         <div class="text-xs text-gray-500">Tech Bank Client</div>
-        <div class="font-semibold mt-1 text-lg">Technical Infographic</div>
+        <div class="font-semibold mt-1 text-lg">Technical Infographic</div> -->
       </article>
 
       <!-- Last project linking to second page -->

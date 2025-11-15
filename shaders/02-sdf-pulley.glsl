@@ -1,4 +1,8 @@
 float map(vec3 p_){
+    // p_.xy = rot2(0.05*sin(iTime)) * p_.xy;
+    // p_.yz = rot2(0.05*cos(iTime)) * p_.yz;
+    p_.xz = rot2(-iTime/10.0) * p_.xz;
+
     // Scale geometry
     float scalingFactor = 3.5;
     vec3 p = p_ / scalingFactor;
