@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <script src="./include.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="./main.js" defer></script>
+  <script src="./include.js"></script>
+</head>
+
+<body class="bg-[#f4f4f4] text-black antialiased">
+  <div class="max-w-screen-sm mx-auto px-5 py-6"> <!-- MAIN CONTAINER -->
+    
+    <!-- HEADER -->
+    <div id="header"></div>
+    <script>include("header", "header.html")</script>
+
+    <!-- HERO -->
+    <!-- <div id="hero"></div>
+    <script>include("hero", "hero.html")</script> -->
+
+    <!-- PROJECTS -->
+    <section id="work" class="space-y-6 mb-14">
+
+
+      <article class="bg-white border border-gray-300 rounded-lg p-4 shadow-sm">
+
+        <script type="module">
+          import { main } from './main.js';
+            window.addEventListener('load', () => {
+          main(document.getElementById('canvas0'), document.getElementById('slider0'), 'shaders/02-sdf-diff.glsl', 1.0);
+          main(document.getElementById('canvas1'), document.getElementById('slider1'), 'shaders/02-sdf-blend.glsl', 1.0);
+          main(document.getElementById('canvas2'), document.getElementById('slider2'), 'shaders/02-sdf-pulley.glsl', 1.0);
+          main(document.getElementById('canvas3'), document.getElementById('slider3'), 'shaders/02-sdf-gyroid.glsl', 0.1);
+        });
+          </script>
+
+        <canvas id="canvas0"></canvas>
+        <div class="controls">
+          <label>
+            &lt;&lt; Move intersecting Sphere &gt;&gt;
+            <input id="slider0" type="range" min="0" max="1" step="0.01" value="0.5">
+          </label>
+        </div>
+        <div class="font-semibold mb-24 text-lg">Constructive Solid Geometry</div>
+
+        <canvas id="canvas1"></canvas>
+        <div class="controls">
+          <label>
+            &lt;&lt; Change Blending Factor &gt;&gt;
+            <input id="slider1" type="range" min="0" max="1" step="0.01" value="0.5">
+          </label>
+        </div>
+        <div class="font-semibold mb-8 text-lg">Interpolating Distance Fields</div>
+        
+        <canvas id="canvas2"></canvas>
+        <div class="controls">
+          <label>
+            &lt;&lt; Change Pulley Diameter &gt;&gt;
+            <input id="slider2" type="range" min="0" max="1" step="0.1" value="0.5">
+          </label>
+        </div>
+        <div class="font-semibold mb-8 text-lg">Robust Parametric Design</div>
+
+        <canvas id="canvas3"></canvas>
+        <div class="controls">
+          <label>
+            &lt;&lt; Move Intersecting Gyroid &gt;&gt;
+            <input id="slider3" type="range" min="0" max="1" step="0.01" value="0.5">
+          </label>
+        </div>
+        <div class="font-semibold mb-8 text-lg">Complex Gradient Lattice Structures</div>
+        <div class="text-xs text-gray-500">Tech Bank Client</div>
+      </article>
+
+    </section>
+
+    <!-- SUCCESS SECTION -->
+    <section id="about" class="mb-14">
+      <div class="bg-white border border-gray-300 rounded-lg p-5 shadow-sm">
+        <h3 class="text-xl font-bold">Designing Success</h3>
+        <p class="mt-2 text-sm text-gray-600">
+          See how we turned ideas into reality. Dive into the stories of successful product designs that make a difference.
+        </p>
+
+        <a href="mailto:hello@example.com"
+           class="inline-block mt-4 px-4 py-2 text-sm border border-black rounded-full hover:bg-gray-100">
+          Read my CV
+        </a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <div id="contact"></div>
+    <script>include("contact", "contact.html")</script>
+
+    <!-- FOOTER -->
+    <div id="footer"></div>
+    <script>include("footer", "footer.html")</script>
+  </div>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  navToggle?.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
+
+</body>
+</html>

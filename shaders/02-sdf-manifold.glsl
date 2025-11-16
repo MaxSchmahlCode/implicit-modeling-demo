@@ -92,6 +92,12 @@ float sdTubeBezier(vec3 p, vec3 p0, vec3 p1, vec3 p2, vec3 p3, float rInner, flo
 
 float map(vec3 p){
 
+    // Scale geometry
+    float scalingFactor = 0.9;
+    p = p / scalingFactor;
+    // p.xz = rot2(0.1 * iTime) * p.xz;
+
+    // Parameters
     float l1 = 1.8;
     float l2 = 1.8;
     float l3 = 1.8;
@@ -206,5 +212,6 @@ float map(vec3 p){
     float box = sdBox(p, b);
     float withBox = opIntersection(unifiedTubes, box);
 
-    return withBox;
+    float scaledResult = scalingFactor * withBox;
+    return scaledResult;
 }
