@@ -32,51 +32,25 @@
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles.css">
-  <style>
+  <!-- <style>
     body { font-family: "Manrope", sans-serif; }
-  </style>
+  </style> -->
   <script type="module" src="./main.js" defer></script>
+  <script src="include.js"></script>
+  <script src="includeit.js"></script>
 </head>
 
 <body class="bg-[#f4f4f4] text-black antialiased">
 
   <!-- MAIN CONTAINER -->
   <div class="max-w-screen-sm mx-auto px-5 py-6">
-
     
     <!-- HEADER -->
-    <!-- <header class="flex items-center justify-between mb-10">
-      <div class="text-xl font-bold">Maximilian Schmahl</div>
-
-      <nav class="relative">
-        <button id="navToggle" class="md:hidden p-2">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
-
-        <ul class="hidden md:flex space-x-4 text-sm">
-          <li><a href="#work" class="hover:underline">Work</a></li>
-          <li><a href="#about" class="hover:underline">About</a></li>
-          <li><a href="#contact" class="hover:underline">Contact</a></li>
-        </ul>
-
-        <div id="mobileMenu"
-             class="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded-md p-3 hidden shadow">
-          <a href="#work" class="block py-2 text-sm">Work</a>
-          <a href="#about" class="block py-2 text-sm">About</a>
-          <a href="#contact" class="block py-2 text-sm">Contact</a>
-        </div>
-      </nav>
-    </header> -->
-
     <div id="header"></div>
-    <script>
-      fetch("header.html")
-        .then(res => res.text())
-        .then(data => document.getElementById("header").innerHTML = data);
-    </script>
+    <script>include("header", "header.html")</script>
+
+    <!-- <div include="footer.html"></div>
+    <script>include("footer", "footer.html")</script> -->
 
     <!-- HERO -->
     <section class="mb-12">
@@ -109,8 +83,19 @@
 
       <!-- Project card template -->
       <!-- Repeat for all project cards -->
+      <div id="implicits-demo"></div>
+      <script>include("implicits-demo", "implicits-demo.html")
+      // initCanvas();
+      </script>
 
-      <article class="bg-white border border-gray-300 rounded-lg p-4 shadow-sm">
+      <!-- <div id="implicits-demo"></div>
+      <script>
+        includeit("implicits-demo", "implicits-demo.html", function() {
+          // Now that content is loaded, initialize your canvas here
+          initCanvas(); // your canvas init function
+        });
+      </script> -->
+      <!-- <article class="bg-white border border-gray-300 rounded-lg p-4 shadow-sm">
 
         <canvas id="canvas0"></canvas>
         <div class="controls">
@@ -148,9 +133,7 @@
         </div>
         <div class="font-semibold mb-8 text-lg">Complex Gradient Lattice Structures</div>
         <div class="text-xs text-gray-500">Tech Bank Client</div>
-        <!-- <img src="assets/me.jpg" class="w-full h-44 object-cover rounded-md mb-3">
-        <div class="font-semibold mt-1 text-lg">Technical Infographic</div> -->
-      </article>
+      </article> -->
 
       <!-- Last project linking to second page -->
       <article class="bg-white border border-gray-300 rounded-lg p-4 shadow-sm">
@@ -196,15 +179,8 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="mb-10 text-sm text-gray-700">
-      <div class="flex justify-between items-center">
-        <span>© 2025 Pearl</span>
-        <div class="flex gap-4">
-          <a href="https://linkedin.com" target="_blank" class="hover:text-accent">LinkedIn</a>
-          <a href="https://github.com" target="_blank" class="hover:text-accent">GitHub</a>
-        </div>
-      </div>
-    </footer>
+    <div id="footer"></div>
+    <script>include("footer", "footer.html")</script>
   </div>
 
 <script>
