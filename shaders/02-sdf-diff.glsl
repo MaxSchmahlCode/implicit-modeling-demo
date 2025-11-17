@@ -3,15 +3,15 @@
 float map(vec3 p) {
 
     // Parameters
-    float xPos = 1.8;
-    float size = 1.6;
+    float xPos = 1.1;
+    float size = 1.2;
 
     // Primitives
-    float d0 = sdSphere(p - vec3(2.4*xPos*2.*(iSlider-0.5), 0.0, 0.80), size+0.5);
+    float d0 = sdSphere(p - vec3(2.4*xPos*2.*(iSlider-0.5), 0.0, 0.80), size+0.4);
     float d1 = sdSphere(p - vec3(-2.4*xPos, 0.0, 0.0), size);
     float d2 = sdBox(p - vec3(-0.8*xPos, 0.0, 0.0), vec3(size));
     float d3 = sdSphere(p - vec3(0.8*xPos, 0.0, 0.0), size);
-    float d4 = sdBox(p - vec3(2.4*xPos, 0.0, 0.0), vec3(size));
+    float d4 = sdBox(p - vec3(2.4*xPos, 0.0, -0.1), vec3(size));
 
     // Boolean Operations
     float op1 = opSub(d1, d0);
