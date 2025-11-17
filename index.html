@@ -31,6 +31,21 @@
     <div id="hero"></div>
     <script>include("hero", "hero.html")</script>
 
+    <script type="module">
+        import { main } from './main.js';
+        window.addEventListener('load', () => 
+            main(document.getElementById('canvas4'), document.getElementById('slider4'), 'shaders/02-sdf-manifold.glsl', 1.0)
+        );
+    </script>
+    <canvas id="canvas4"></canvas>
+    <div class="controls">
+      <label>
+        &lt;&lt; Change Blending Factor &gt;&gt;
+        <input id="slider4" type="range" min="0" max="1" step="0.01" value="0.5">
+      </label>
+    </div>
+    <div class="font-semibold mb-8 text-lg">Interpolating Distance Fields</div>
+
     <!-- PROJECTS -->
     <section id="work" class="space-y-6 mb-14">
 
@@ -120,9 +135,13 @@
     const toggle = document.getElementById("navToggle");
     const menu = document.getElementById("mobileMenu");
 
-    toggle.addEventListener("click", () => {
-      menu.classList.toggle("hidden");
-    });
+    // Only attach handler if both elements are present. The header is loaded
+    // asynchronously via `include()`, so these may be null at DOMContentLoaded.
+    if (toggle && menu) {
+      toggle.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    }
   });
 </script>
 </body>
