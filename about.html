@@ -20,11 +20,11 @@
     <script>include("header", "header.html")</script>
 
      <section id="about" class="space-y-6 mb-14">
+       <img src="assets/me.jpg"
+       class="w-64 h-64 object-cover rounded-full border border-gray-300 shadow">
+       <h1 class="text-2xl font-extrabold">Maximilian Schmahl</h1>
+       <p class="mt-3 text-lg text-gray-600">Engineer · Coder · Creative</p>
       <h1 class="text-4xl md:text-6xl mt-5 lg:text-6xl font-bold leading-tight">At the intersection of design, code, and manufacturing innovation.</h1>
-      <img src="assets/me.jpg"
-      class="w-64 h-64 object-cover rounded-full border border-gray-300 shadow">
-      <h1 class="text-2xl font-extrabold">Maximilian Schmahl</h1>
-      <p class="mt-3 text-lg text-gray-600">Engineer · Coder · Creative</p>
 
       <p class="text-lg mt-1">
         Hi, I'm Max, an engineer working at the intersection of computational design and additive manufacturing.<br><br>
@@ -53,7 +53,7 @@
           See how we turned ideas into reality. Dive into the stories of successful product designs that make a difference.
         </p>
 
-        <a href="./assets/Lebenslauf.pdf"
+        <a href="./assets/CV-Maximilian-Schmahl.pdf"
            class="inline-block mt-4 px-4 py-2 text-sm border border-black rounded-full hover:bg-gray-100">
           Read my CV
         </a>
@@ -70,11 +70,16 @@
   </div>
 
 <script>
-  const navToggle = document.getElementById('navToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-
-  navToggle?.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("navToggle");
+    const menu = document.getElementById("mobileMenu");
+    // Only attach handler if both elements are present. The header is loaded
+    // asynchronously via `include()`, so these may be null at DOMContentLoaded.
+    if (toggle && menu) {
+      toggle.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    }
   });
 </script>
 

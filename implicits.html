@@ -133,11 +133,16 @@
   </div>
 
 <script>
-  const navToggle = document.getElementById('navToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-
-  navToggle?.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("navToggle");
+    const menu = document.getElementById("mobileMenu");
+    // Only attach handler if both elements are present. The header is loaded
+    // asynchronously via `include()`, so these may be null at DOMContentLoaded.
+    if (toggle && menu) {
+      toggle.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    }
   });
 </script>
 
