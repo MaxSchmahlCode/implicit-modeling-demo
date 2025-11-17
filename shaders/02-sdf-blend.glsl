@@ -19,7 +19,7 @@ float map(vec3 p) {
     float d3 = sdCylinderY(pCylinder, lObject, 0.9 * lObject);
 
     // Smooth Union
-    float su = opSmoothUnion(d1, d2, 0.25 * iSlider);
+    float su = opSmoothUnion(d1, d2, .5 * iSlider);
     su = opSmoothUnion(su, d3, 0.5 * iSlider);
     
     return su;
