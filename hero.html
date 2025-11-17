@@ -5,9 +5,50 @@
              class="w-64 h-64 object-cover rounded-full border border-gray-300 shadow">
 
         <div>
-          <h1 class="text-3xl font-extrabold">Max Schmahl.</h1>
-          <p class="text-lg mt-1">Working on the future of how we design parts.</p>
-          <p class="mt-3 text-sm text-gray-600">Engineer · Creative · Coder</p>
+          <h1 class="text-2xl font-extrabold">Maximilian Schmahl</h1>
+          <p class="mt-3 text-lg text-gray-600">Engineer · Creative · Coder</p>
+          <h1 class="text-4xl md:text-6xl mt-5 lg:text-6xl font-bold leading-tight">At the intersection of design, code, and manufacturing innovation.</h1>
+
+          <p class="text-lg mt-1"></p>
+          
+          <!--Identity: What I do, who I am-->
+          <!-- <h1 class="text-4xl md:text-6xl mt-5 lg:text-7xl font-bold leading-tight">Exploring computational design for additive manufacturing.</h1> -->
+          <!-- <h1 class="text-4xl md:text-6xl mt-5 lg:text-7xl font-bold leading-tight">Unlocking additive manufacturing's geometric freedom through computational design.</h1> -->
+          <!-- <h1 class="text-4xl md:text-6xl mt-5 lg:text-7xl font-bold leading-tight">Working where design intuition, software development, and manufacturing innovation converge</h1> -->
+          <!-- <h1 class="text-4xl md:text-6xl mt-5 lg:text-7xl font-bold leading-tight">Democratizing sophisticated additive manufacturing design through accessible tools</h1> -->
+          <!--Credibility: My approach and capability-->
+          <!--Passion: My vision and why it matters-->
+          <!-- <h1 class="text-4xl md:text-6xl mt-5 lg:text-7xl font-bold leading-tight">Balancing ambitious vision with real-world manufacturing constraints</h1> -->
+          <!--Call to Action/ Openness: What I am looking for-->
+          <!-- <h1 class="text-4xl md:text-6xl mt-5 lg:text-7xl font-bold leading-tight">Currently seeking where these capabilities can solve the problems that matter.</h1> -->
+          <!-- <h1 class="text-4xl md:text-6xl mt-5 lg:text-7xl font-bold leading-tight">Finding where advanced DfAM techniques create the greatest value</h1> -->
+          <!-- <h1 class="text-4xl md:text-6xl mt-5 lg:text-7xl font-bold leading-tight">Understanding where these advanced capabilities deliver meaningful impact</h1> -->
+          <!-- <h1 class="text-4xl md:text-6xl mt-5 lg:text-7xl font-bold leading-tight">Seeking where computational design capabilities can address real-world problems.</h1> -->
+          <!-- <h1 class="text-4xl md:text-6xl mt-5 lg:text-7xl font-bold leading-tight">Exploring computational design capabilities and where those can address real-world problems.</h1> -->
+          <!-- <h1 class="text-4xl md:text-6xl mt-5 lg:text-7xl font-bold leading-tight">Actively seeking problems worth solving while exploring new design capabilities.</h1> -->
+          <!-- <h1 class="text-4xl md:text-6xl mt-5 lg:text-7xl font-bold leading-tight">Seeking problems worth solving.</h1> -->
+          <h1 class="text-4xl md:text-6xl mt-5 lg:text-7xl font-bold leading-tight"></h1>
+          <h1 class="text-4xl md:text-6xl mt-5 lg:text-7xl font-bold leading-tight"></h1>
+          <h1 class="text-4xl md:text-6xl mt-5 lg:text-7xl font-bold leading-tight"></h1>
+          <h1 class="text-4xl md:text-6xl mt-5 lg:text-7xl font-bold leading-tight"></h1>
+          <h1 class="text-4xl md:text-6xl mt-5 lg:text-7xl font-bold leading-tight"></h1>
+          <h1 class="text-4xl md:text-6xl mt-5 lg:text-7xl font-bold leading-tight"></h1>
+          <h1 class="text-4xl md:text-6xl mt-5 lg:text-7xl font-bold leading-tight"></h1>
+
+          <script type="module">
+              import { main } from './main.js';
+              window.addEventListener('load', () => 
+                  main(document.getElementById('canvas4'), document.getElementById('slider4'), 'shaders/02-sdf-manifold.glsl', 1.0)
+              );
+          </script>
+          <canvas id="canvas4"></canvas>
+          <div class="controls">
+            <label>
+              &lt;&lt; Change Blending Factor &gt;&gt;
+              <input id="slider4" type="range" min="0" max="1" step="0.01" value="0.5">
+            </label>
+          </div>
+          <div class="font-semibold mb-8 text-lg">Interpolating Distance Fields</div>
 
           <a href="mailto:hello@example.com"
              class="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-accent text-white rounded-full text-sm transition hover:opacity-90">

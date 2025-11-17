@@ -1,10 +1,12 @@
     <!-- HEADER -->
+
     <header class="flex items-center justify-between mb-10">
-      <a href="index.html" class="flex items-center gap-2">
-        <img src="assets/implicits.png" alt="Home" class="w-24 h-10 object-contain rounded-full">
+      <!-- <div class="text-xl font-bold">Maximilian Schmahl</div> -->
+      <a></a>
+      <a href="./index.html" class="flex items-center gap-2">
+        <img src="./assets/implicits.png" alt="Home" class="w-24 h-10 object-contain rounded-full">
       </a>
 
-      <!-- <div class="text-xl font-bold">Maximilian Schmahl</div> -->
 
       <nav class="relative">
         <button id="navToggle" class="md:hidden p-2">
@@ -27,4 +29,36 @@
           <a href="#contact" class="block py-2 text-sm">Contact</a>
         </div>
       </nav>
+      
+      <!-- <script>
+        const navToggle = document.getElementById('navToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        navToggle?.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      </script> -->
+
+      <!-- <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const toggle = document.getElementById("navToggle");
+          const menu = document.getElementById("mobileMenu");
+
+          toggle.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+          });
+        });
+      </script> -->
+
     </header>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggle = document.getElementById("navToggle");
+        const menu = document.getElementById("mobileMenu");
+
+        toggle.addEventListener("click", () => {
+          menu.classList.toggle("hidden");
+        });
+      });
+    </script>

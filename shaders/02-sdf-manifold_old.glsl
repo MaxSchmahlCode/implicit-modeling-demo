@@ -21,7 +21,7 @@ vec3 bezierSecond(vec3 A, vec3 B, float t) {
 // Uses coarse sampling then 5 Newton iterations constrained to [0,1].
 float nearestTOnBezier(vec3 p, vec3 A, vec3 B, vec3 C, vec3 D) {
     // coarse sampling to get initial guess
-    const int SAMPLES = 6; // 12
+    const int SAMPLES = 12;
     float bestT = 0.0;
     float bestDist2 = 1.0 / 0.0; // +inf
     for (int i = 0; i <= SAMPLES; ++i) {
@@ -92,35 +92,10 @@ float sdTubeBezier(vec3 p, vec3 p0, vec3 p1, vec3 p2, vec3 p3, float rInner, flo
 
 float map(vec3 p){
 
-    const int orientA[9] = int[9](
-        /*0*/ 0,
-        /*1*/ 0,
-        /*2*/ 1,
-        /*3*/ 1,
-        /*4*/ 1,
-        /*5*/ 1,
-        /*6*/ 2,
-        /*7*/ 2,
-        /*8*/ 2
-    );
-
-    const int orientB[9] = int[9](
-        /*0*/ 1,
-        /*1*/ 0,
-        /*2*/ 1,
-        /*3*/ 1,
-        /*4*/ 1,
-        /*5*/ 1,
-        /*6*/ 2,
-        /*7*/ 0,
-        /*8*/ 1
-    );
-
-
     // Scale geometry
     float scalingFactor = 0.9;
     p = p / scalingFactor;
-    p.xz = rot2(0.05 * iTime) * p.xz;
+    // p.xz = rot2(0.1 * iTime) * p.xz;
 
     // Parameters
     float l1 = 1.8;
@@ -183,29 +158,41 @@ float map(vec3 p){
     for(int i = 0; i < nCurves; i++) {
         
         p0 = listA[i];
-
-        int oA = orientA[i];
-        p1 = listA[i];
-        p1[oA] = 0.0;
-        float firstCylinder = sdCylinder(p - p0, rCyl, hCyl, oA);
-        unifiedCylinders = opUnion(unifiedCylinders, firstCylinder);
-
+        
+        if(abs(listA[i][0]) == l1) {
+            p1 = vec3(0.0, listA[i][1], listA[i][2]);
+            cylinderOrientation = 0;
+        }
+        else if(abs(listA[i][1]) == l2) {
+            p1 = vec3(listA[i][0], 0.0, listA[i][2]);
+            cylinderOrientation = 1;
+        }
+        else if(abs(listA[i][2]) == l3) {
+            p1 = vec3(listA[i][0], listA[i][1], 0.0);
+            cylinderOrientation = 2;
+        }
         vec3 pCylinder = listA[i];
 
-        // float firstCylinder = sdCylinder(p - p0, rCyl, hCyl, cylinderOrientation); //cylinderOrientation);
-        // unifiedCylinders = opUnion(unifiedCylinders, firstCylinder);
+        float firstCylinder = sdCylinder(p - p0, rCyl, hCyl, cylinderOrientation); //cylinderOrientation);
+        unifiedCylinders = opUnion(unifiedCylinders, firstCylinder);
 
-        int oB = orientB[i];
-        p2 = listB[i];
-        p2[oB] = 0.0;
+        if(abs(listB[i][0]) == l1) {
+            p2 = vec3(0.0, listB[i][1], listB[i][2]);
+            cylinderOrientation = 0;
+        }
+        else if(abs(listB[i][1]) == l2) {
+            p2 = vec3(listB[i][0], 0.0, listB[i][2]);
+            cylinderOrientation = 1;
+        }
+        else if(abs(listB[i][2]) == l3) {
+            p2 = vec3(listB[i][0], listB[i][1], 0.0);
+            cylinderOrientation = 2;
+        }
+
         vec3 p3 = listB[i];
-        float secondCylinder = sdCylinder(p - p3, rCyl, hCyl, oB);
+
+        float secondCylinder = sdCylinder(p - p3, rCyl, hCyl, cylinderOrientation); //cylinderOrientation);
         unifiedCylinders = opUnion(unifiedCylinders, secondCylinder);
-
-
-        // vec3 p3 = listB[i];
-        // float secondCylinder = sdCylinder(p - p3, rCyl, hCyl, cylinderOrientation); //cylinderOrientation);
-        // unifiedCylinders = opUnion(unifiedCylinders, secondCylinder);
 
 
         float bezier2 = sdTubeBezier(p, p0, p1, p2, p3, rInner, rOuter);
