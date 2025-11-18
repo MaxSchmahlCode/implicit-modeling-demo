@@ -6,22 +6,19 @@ float map(vec3 p){
     p = p / scalingFactor;
 
     // Geometric Parameters
-    float dt = 0.1;
-    float bucket = floor(iSlider / dt);
+    float dSlider = 0.1;
     float stepsize = 0.1;
-    float stepper = 0.6 * stepsize * bucket;
-
-    // Geometric Parameters
+    float stepper = stepsize * iSlider / dSlider;
     float beltWidth = 0.5;
 
-    float bodyRadius = 0.5 + stepper; // outside radius
+    float bodyRadius = 0.5 + 0.6 * stepper; // outside radius
     float bodyHalfHeight = beltWidth / 2.0 + 0.02; // without hub
 
     float hubRadius = 0.3 + 0.1 * stepper;
     float hubHalfHeight = bodyHalfHeight + 0.1;
     float heightDifference = hubHalfHeight - bodyHalfHeight;
 
-    float teethCount = 20. + 40. * stepper;
+    float teethCount = 20. + floor(25. * stepper);
     float teethRadius = 0.05;
     float teethHalfheight = beltWidth / 2.0;
     float rimThickness = 0.01;
